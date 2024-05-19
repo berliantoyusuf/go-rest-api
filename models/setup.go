@@ -8,7 +8,9 @@ import (
 var DB *gorm.DB
 
 func ConnectDatabase() {
-	database, err := gorm.Open(postgres.Open("root:@tcp(localhost:5432)/go_rest_api"))
+	dbURL := "postgres://postgres:mysecretpassword@localhost:5432/go_rest_api"
+
+	database, err := gorm.Open(postgres.Open(dbURL))
 	if err != nil {
 		panic(err)
 	}
